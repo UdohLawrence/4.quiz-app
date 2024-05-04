@@ -36,6 +36,7 @@
 <style scoped>
   .container{
     max-width: 1000px;
+    width: 80%;
     margin: 0 auto;
   }
   header{
@@ -43,6 +44,7 @@
     margin-top: 30px;
     margin-bottom: 10px;
     align-items: center;
+    justify-content: space-between;
   }
   header h1{
     font-weight: bold;
@@ -58,6 +60,18 @@
     display: flex;
     flex-wrap:wrap;
     margin-top: 40px;
+  }
+  @media(max-width:500px){
+    .container{
+      width: 80%;
+      margin: 0 auto;
+    }
+    header{
+      flex-direction: column;
+    }
+    .options-container{
+      flex-direction: column;
+    }
   }
  
 </style>

@@ -18,11 +18,11 @@
      /* CARD */
   .card{
     width: 310px;
+    max-width: 100%;
     overflow: hidden;
     border-radius: 5%;
     box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-    margin-bottom: 35px;
-    margin-right: 20px;
+    margin: 20px auto;
     cursor: pointer;
   }
   .card img{
