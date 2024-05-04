@@ -1,18 +1,38 @@
+<script setup>
+  import q from './db/questions.json'
+  import {ref, watch} from 'vue'
+  
+
+  const search = ref('')
+  const quizes = ref(q)
+
+  watch(search, () => {
+    quizes.value = q.filter(quiz => quiz.name.toLowerCase().includes(search.value.toLowerCase()))
+  })
+
+</script>
+
 <template>
   <div class="container">
     <header>
       <h1>Quizes</h1>
-      <input type="text" name="" id="" placeholder="Search...">
+      <input type="text" name="search" id="search" v-model.trim="search" placeholder="Search...">
     </header>
     <div class="options-container">
-
+      <div v-for="quiz in quizes" :key="quiz.id" class="card">
+        <img :src="quiz.img" alt="">
+        <div class="card-text">
+          <h2>{{quiz.name}}</h2>
+          <p>{{quiz.questions.length}} Questions</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
   .container{
-    max-width: 960px;
+    max-width: 1000px;
     margin: 0 auto;
   }
   header{
@@ -30,5 +50,31 @@
     background-color: rgba(128,128,128,0.1);
     padding: 10px;
     border-radius: 5px;
+  }
+  .options-container{
+    display: flex;
+    flex-wrap:wrap;
+    margin-top: 40px;
+  }
+  /* CARD */
+  .card{
+    width: 310px;
+    overflow: hidden;
+    border-radius: 5%;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+    margin-bottom: 35px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  .card img{
+    width: 100%;
+    height: 190px;
+    margin: 0;
+  }
+  .card .card-text{
+    padding: 0 5px;
+  }
+  .card .card-text h2{
+    font-weight: bold;
   }
 </style>
